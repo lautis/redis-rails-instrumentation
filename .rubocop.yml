@@ -1,0 +1,28 @@
+AllCops:
+  Exclude:
+    - redis-rails-instrumentation.gemspec
+    - lib/redis/rails/instrumentation/version.rb
+    - "vendor/**/*"
+    - "gemfiles/vendor/**/*"
+
+Lint/HandleExceptions:
+  Exclude:
+    - 'spec/**/*'
+
+Style/Documentation:
+  Exclude:
+    - 'spec/**/*'
+
+Style/Documentation:
+  Enabled: false
+
+Style/ConstantName:
+  Enabled: false
+
+Style/FileName:
+  Exclude:
+    - 'lib/redis-rails-instrumentation.rb'
+
+Style/LineLength:
+  Exclude:
+    - 'redis-rails-instrumentation.gemspec'
