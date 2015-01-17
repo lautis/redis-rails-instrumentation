@@ -5,6 +5,8 @@ rvm:
   - 2.0.0
   - 2.1.5
   - 2.2.0
+services:
+  - redis-server
 matrix:
   include:
     - rvm: jruby
