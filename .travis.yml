@@ -7,7 +7,3 @@ rvm:
   - 2.2.0
 services:
   - redis-server
-matrix:
-  include:
-    - rvm: jruby
-      env: JRUBY_OPTS="--2.0"
