@@ -30,4 +30,4 @@ class Redis
   end
 end
 
-Redis::Client.prepend(Redis::Rails::Instrumentation::Logging)
+Redis::Client.send(:prepend, Redis::Rails::Instrumentation::Logging)
