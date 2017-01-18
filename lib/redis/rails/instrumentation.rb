@@ -16,7 +16,7 @@ class Redis
           cmds = event.payload[:commands]
 
           output = cmds.map do |name, *args|
-            if args.present?
+            if !args.empty?
               "[ #{name.to_s.upcase} #{args.join(' ')} ]"
             else
               "[ #{name.to_s.upcase} ]"
