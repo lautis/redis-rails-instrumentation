@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in redis-rails-instrumentation.gemspec
 gemspec
+
+gem 'activesupport', '~> 4.2' if RUBY_VERSION < '2.3'
