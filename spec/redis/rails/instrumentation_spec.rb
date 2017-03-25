@@ -1,5 +1,6 @@
 require 'spec_helper'
 require 'redis'
+require 'base64'
 
 class Redis
   module Rails
@@ -40,6 +41,14 @@ class Redis
         redis.get('test')
         expect(@logger.logged(:debug)[0])
           .to match(/Redis \(\d+\.\d+ms\)  \[ GET test \]/)
+      end
+
+      it 'truncates binary data' do
+        @logger.level = Logger::DEBUG
+        Instrumentation::Railtie.run_initializers
+        redis.set('test', Base64.decode64("R0lGODlhAQABAPAAAAAAAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="))
+        expect(@logger.logged(:debug)[0])
+          .to match(/Redis \(\d+\.\d+ms\)  \[ SET test <BINARY DATA> \]/)
       end
 
       it 'omits debug logging in production' do

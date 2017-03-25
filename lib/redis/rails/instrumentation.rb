@@ -17,14 +17,25 @@ class Redis
 
           output = cmds.map do |name, *args|
             if !args.empty?
-	      args = args.map { |arg| arg.respond_to?(:encoding) && arg.encoding == Encoding::ASCII_8BIT ? 'BINARY DATA' : arg }
-              "[ #{name.to_s.upcase} #{args.join(' ')} ]"
+              "[ #{name.to_s.upcase} #{format_arguments(args)} ]"
             else
               "[ #{name.to_s.upcase} ]"
             end
           end.join(' ')
 
           debug message(event, 'Redis', output)
+        end
+
+        private
+
+        def format_arguments(args)
+          args.map do |arg|
+            if arg.respond_to?(:encoding) && arg.encoding == Encoding::ASCII_8BIT
+              '<BINARY DATA>'
+            else
+              arg
+            end
+          end.join(' ')
         end
       end
     end
