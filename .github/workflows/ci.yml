@@ -15,7 +15,6 @@ jobs:
           - "3.2"
           - "3.3"
           - "3.4"
-          - jruby
     steps:
       - uses: actions/checkout@v2
       - uses: supercharge/redis-github-action@1.8.0
