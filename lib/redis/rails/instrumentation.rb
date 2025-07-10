@@ -1,5 +1,5 @@
 require 'redis'
-require 'redis/rails/instrumentation/logging'
+require 'redis/rails/instrumentation/middleware'
 require 'redis/rails/instrumentation/version'
 require 'active_support'
 require 'sweet_notifications'
@@ -42,4 +42,4 @@ class Redis
   end
 end
 
-Redis::Client.send(:prepend, Redis::Rails::Instrumentation::Logging)
+RedisClient.register(Redis::Rails::Middleware)
