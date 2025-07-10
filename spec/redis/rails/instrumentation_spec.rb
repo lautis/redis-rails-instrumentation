@@ -27,9 +27,9 @@ class Redis
       it 'logs pipelined commands to a single line' do
         @logger.level = Logger::DEBUG
         Instrumentation::Railtie.run_initializers
-        redis.pipelined do
-          redis.get('test1')
-          redis.get('test2')
+        redis.pipelined do |pipeline|
+          pipeline.get('test1')
+          pipeline.get('test2')
         end
         expect(@logger.logged(:debug)[0])
           .to match(/Redis \(\d+\.\d+ms\)  \[ GET test1 \] \[ GET test2 \]/)
