@@ -1,6 +1,8 @@
-# Redis Rails Instrumentation [![Build Status](https://travis-ci.org/lautis/redis-rails-instrumentation.svg?branch=master)](https://travis-ci.org/lautis/redis-rails-instrumentation)
+# Redis Rails Instrumentation
 
 Railtie to include Redis commands in Rails logging.
+
+Version 2.0 and newer only supports redis-rb 5.x. If you need older version, please use 1.0.1.
 
 ## Installation
 
